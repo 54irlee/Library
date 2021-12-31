@@ -125,3 +125,111 @@ CREATE TABLE members_branches (
     FOREIGN KEY (member_id) REFERENCES members(member_id),
     FOREIGN KEY (branch_id) REFERENCES branches(branch_id)
     );
+
+CREATE TABLE books_publishers_link (
+    book_id INTEGER,
+    publisher_id INTEGER,
+    PRIMARY KEY (book_id, publisher_id),
+    FOREIGN KEY (book_id) REFERENCES books(book_id),
+    FOREIGN KEY (publisher_id) REFERENCES books_publisher(publisher_id)
+    );
+
+ALTER TABLE branches RENAME COLUMN branch_id TO id;
+
+ALTER TABLE branches RENAME COLUMN branch_name TO name;
+
+ALTER TABLE branches RENAME COLUMN branch_address1 TO address1;
+
+ALTER TABLE branches RENAME COLUMN branch_address2 TO address2;
+
+ALTER TABLE genre RENAME COLUMN genre_id to id;
+
+ALTER TABLE books RENAME COLUMN book_id TO id;
+
+ALTER TABLE books RENAME COLUMN book_title TO title;
+
+ALTER TABLE members RENAME COLUMN member_id to id;
+
+ALTER TABLE staffs RENAME COLUMN staff_id TO id;
+
+ALTER TABLE books_publisher RENAME COLUMN publisher_id to id;
+
+ALTER TABLE publishers RENAME COLUMN publish_year to year;
+
+RENAME TABLE books_publisher TO publishers;
+
+RENAME TABLE genre TO genres;
+
+ALTER TABLE current_loan DROP COLUMN status;
+
+RENAME TABLE shelf_table to shelf;
+
+ALTER TABLE current_loan
+ADD FOREIGN KEY (staff_id)
+REFERENCES staffs(id) ON DELETE CASCADE;
+
+ALTER TABLE loan_history RENAME COLUMN staff_id TO loan_staff_id;
+
+ALTER TABLE loan_history
+ADD COLUMN return_staff_id INTEGER NOT NULL,
+ADD FOREIGN KEY (return_staff_id) REFERENCES staffs(id) ON DELETE CASCADE;
+
+RENAME TABLE current_loan TO current_loans;
+
+RENAME TABLE loan_history to loans_history;
+
+ALTER TABLE publishers
+DROP COLUMN year;
+
+ALTER TABLE publishers
+DROP COLUMN no_of_actual_copies;
+
+ALTER TABLE publishers
+DROP COLUMN no_of_available_copies;
+
+ALTER TABLE books
+ADD year VARCHAR(50);
+
+ALTER TABLE books
+ADD no_of_actual_copies INTEGER;
+
+ALTER TABLE books
+ADD no_of_current_available_copies INTEGER;
+
+ALTER TABLE publishers
+DROP FOREIGN KEY publishers_ibfk_1;
+
+ALTER TABLE publishers
+DROP COLUMN book_id;
+
+ALTER TABLE publishers
+RENAME COLUMN publisher TO name;
+
+ALTER TABLE book_shelf_link
+DROP FOREIGN KEY book_shelf_link_ibfk_2;
+
+ALTER TABLE shelf
+MODIFY COLUMN id INTEGER NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE book_shelf_link
+ADD FOREIGN KEY (shelf_id) REFERENCES shelf(id);
+
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE loans_history
+DROP PRIMARY KEY ;
+SET FOREIGN_KEY_CHECKS=1;
+
+ALTER TABLE loans_history
+ADD COLUMN id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+ALTER TABLE loans_history
+ADD FOREIGN KEY (member_id) REFERENCES members(id) ON DELETE CASCADE;
+
+ALTER TABLE loans_history
+ADD FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE;
+
+ALTER TABLE loans_history
+ADD FOREIGN KEY (loan_staff_id) REFERENCES staffs(id) ON DELETE CASCADE;
+
+ALTER TABLE genres
+RENAME COLUMN genre_name TO name;
