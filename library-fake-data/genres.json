@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Action"
+  },
+  { "id": 2, "name": "Adventure" },
+  {
+    "id": 3,
+    "name": "Classics"
+  },
+  { "id": 4, "name": "Comic Book" },
+  {
+    "id": 5,
+    "name": "Graphic Novel"
+  },
+  { "id": 6, "name": "Detective" },
+  {
+    "id": 7,
+    "name": "Mystery"
+  },
+  { "id": 8, "name": "Fantasy" },
+  {
+    "id": 9,
+    "name": "Historical Fiction"
+  },
+  { "id": 10, "name": "Horror" },
+  {
+    "id": 11,
+    "name": "Literary Fiction"
+  },
+  { "id": 12, "name": "Romance" },
+  {
+    "id": 13,
+    "name": "Science Fiction"
+  },
+  { "id": 14, "name": "Short Stories" },
+  {
+    "id": 15,
+    "name": "Suspense"
+  },
+  { "id": 16, "name": "Thrillers" },
+  {
+    "id": 17,
+    "name": "Biographies"
+  },
+  { "id": 18, "name": "Autobiographies" },
+  {
+    "id": 19,
+    "name": "Cookbooks"
+  },
+  { "id": 20, "name": "Essays" },
+  {
+    "id": 21,
+    "name": "History"
+  },
+  { "id": 22, "name": "Memoir" },
+  {
+    "id": 23,
+    "name": "Poetry"
+  },
+  { "id": 24, "name": "Self-Help" },
+  {
+    "id": 25,
+    "name": "True Crime"
+  }
+]
